@@ -81,9 +81,15 @@ const toggleMenu = (ev)=>{
     
 };
 
+const toggleSunAndMoon = ()=>{
+    document.querySelector('.sun-decoration1').classList.toggle('change');
+    document.querySelector('.sun-decoration2').classList.toggle('change');
+    document.querySelector('.sun').classList.toggle('change');
+    document.querySelector('.earth-shadow').classList.toggle('change');
+}
 
 
-const toggleDarkMode = (ev)=>{
+const toggleDarkMode = ()=>{
     const root = getComputedStyle(document.documentElement);
     const lightColor = root.getPropertyValue('--color-primary-light');
     const darkColor = root.getPropertyValue('--color-primary-dark');
@@ -100,21 +106,24 @@ const toggleDarkMode = (ev)=>{
     document.documentElement.style.setProperty('--contact-form-textarea-image-light', ContactFormTextAreaImageDark);
     document.documentElement.style.setProperty('--contact-form-textarea-image-dark', ContactFormTextAreaImageLight);
     document.documentElement.style.setProperty('--social-link-brightness-desktop', SocialLinkBrightnessMobile);
-    if(innerWidth > 970){
+    if(innerWidth > 700){
         document.documentElement.style.setProperty('--social-link-brightness-mobile', SocialLinkBrightnessDesktop);
     }
     
-
-     
-    document.querySelector('.sun-decoration1').classList.toggle('change');
-    document.querySelector('.sun-decoration2').classList.toggle('change');
-    document.querySelector('.sun').classList.toggle('change');
-    document.querySelector('.earth-shadow').classList.toggle('change');
+    toggleSunAndMoon();
 }
 
-
+document.addEventListener('DOMContentLoaded', ()=>{
+    // Switch off for devolpment
+    const usesDarkMode = window.matchMedia("(prefers-color-scheme: darK)").matches;
+    console.log(usesDarkMode)
+    if(usesDarkMode){
+        toggleDarkMode();
+    }
+})
 const init = ()=>{
     
+
     document.querySelector('.page-wrapper').addEventListener("scroll", HideAndRevielPrimaryHeader);
     MenuButton.addEventListener('click', toggleMenu);
     darkModeButton.addEventListener('click', toggleDarkMode);
