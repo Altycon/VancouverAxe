@@ -16,7 +16,9 @@
     --page-top-padding-adjustment: 8rem;
     --color-primary-light: hsl(0 0% 90%);
     --color-primary-dark: hsl(0 0% 11%);
+    /* --color-primary-dark: hsl(21 100% 5%); */
     --color-primary-accent-light: hsl(0 0% 80%);
+    /* --color-primary-accent-light: hsl(127 9% 81%); */
     --color-primary-accent-dark: hsl(0 0% 20%);
     /*  TEXT/FONT  */
     --font-primary: sans-serif;
@@ -33,12 +35,16 @@
     );
 
         /*  Size    */
-    --text-size-p: clamp(1rem, 2vmin, 1.2rem);
+    --text-size-p: 1.2rem;
+    /* --text-size-p: clamp(1rem, 2vmin, 1.2rem); */
     --text-size-h1: clamp(1.5rem, 10vmin, 5rem);
-    --text-size-h2: clamp(1.5rem, 7vmin, 3rem);
-    --text-size-h3: clamp(1rem, 5vmin, 1.75rem);
+    --text-size-h2: 1.8rem;
+    /* --text-size-h2: clamp(1.5rem, 7vmin, 3rem); */
+    --text-size-h3: 1.5rem;
+    /* --text-size-h3: clamp(1rem, 5vmin, 1.75rem); */
     --text-size-sup: clamp(1.2rem, 5vmin, 1.5rem);
-    --text-size-smallest: clamp(.9rem, 3vmin, 1rem);
+    --text-size-smallest: 1rem;
+    /* --text-size-smallest: clamp(.9rem, 3vmin, 1rem); */
         /*  Shadow    */
     --text-shadow-primary: 2px 2px hsl(0 0% 0% / .5);
 
@@ -78,8 +84,7 @@
 *{margin: 0;padding: 0;box-sizing: border-box;}
 h2{font-size: var(--text-size-h2);}
 h3{font-size: var(--text-size-h3);}
-p{font-size: var(--text-size-p); line-height: 1.5rem;}
-
+p{font-size: var(--text-size-p); line-height: 1.8rem;}
 
 
 /*  SITEWIDE  STYLES  */
@@ -94,6 +99,7 @@ body{
     text-align: center;
     min-height: 100vh;
     background-color: var(--bg-color-light);
+    /* color: hsl(96 18% 52%); */
 }
 body::before{
     content: "";
@@ -206,6 +212,7 @@ footer p{
     border-radius: 50px;
     font-weight: 600;
     color: var(--text-color-dark);
+    white-space: nowrap;
 }
 
 /*      HOME        */
@@ -222,15 +229,27 @@ footer p{
     isolation: isolate;
 }
 .page-section__title{
-    
-    /* margin: 0 auto 0 34vw; */
-    /* width: 66vw; */
-    /* background-color: var(--bg-color-accent-light); */
+    position: relative;
     color: var(--color-primary-accent-dark);
     padding: 1rem;
-    /* border-top-left-radius: 50px; */
+   
 }
-
+.page-section__title::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 50%;
+    height: 100%;
+    border-bottom: 1px solid var(--color-primary-dark);
+}
+.page-section__title::after{
+    content: "";
+    position: absolute;
+    top: -100%; right: 0;
+    width: 33%;
+    height: 100%;
+    border-bottom: 1px solid var(--color-primary-dark);
+}
 
 .section-content__wrapper{
     padding: var(--padding1);
@@ -270,6 +289,7 @@ footer p{
     font-size: .6rem;
     text-transform: uppercase;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 /*  LIGHT/DARK MODE TOGGLE BUTTON   */
@@ -360,6 +380,9 @@ footer p{
 .social-link{
     display: inline-block;
 }
+.social-link:nth-child(2){  /*  This hides the twitter icon. This is temporary until decision to keep is made   */
+    display: none;
+}
 .social-link img{
     filter: brightness(calc(var(--social-link-brightness-mobile) * 1%));
     -webkit-filter: brightness(calc(var(--social-link-brightness-mobile) * 1%));
@@ -396,6 +419,7 @@ footer p{
 .navigation-primary__link{
     display: block;
     font-size: var(--text-size-p);
+    line-height: 1.8rem;
     font-weight: 500;
     padding: .25rem;
     color: var(--primary-header-color-light);
@@ -483,7 +507,7 @@ footer p{
     font-weight: 500;
 }
 .intro-section__hours{
-    max-width: var(--content-max-width);
+    max-width: 350px;
     border: 1px solid var(--bg-color-dark);
     padding: 1rem;
     border-radius: 5px;
@@ -546,7 +570,7 @@ footer p{
 .location-section__content > article > p{
     color: var(--text-color-dark);
     margin-bottom: 1rem;
-    max-width: var(--content-max-width);
+    max-width: 350px;
 }
 .location-section__content > article > address{
     color: var(--text-color-dark);
@@ -680,9 +704,9 @@ footer p{
 .faqs-section__answer{
     max-width: var(--content-max-width);
 }
-
+/*---------------------------------------------------------------------------------------------*/
 /*
-*       RULES PAGE
+*       RULES PAGE      
 */
 /*
 *       RULES SECTION
@@ -695,10 +719,21 @@ footer p{
     color: var(--text-color-dark);
 }
 .rules-section__rule{
+    font-size: var(--text-size-p);
     font-family: var(--font-primary);
     padding: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.8rem;
 }
+
+/*---------------------------------------------------------------------------------------------*/
+/*
+*       GALLERY PAGE
+*/
+.gallery-section > h1{
+    padding-top: 3rem;
+}
+
+
 /*  ANIMATIONS  */
 
 
@@ -791,7 +826,7 @@ footer p{
         display: block;
         text-decoration: none;
         font-size: 1rem;
-        padding: 1rem 2rem;
+        padding: 1rem 1rem;
         color: var(--text-color-dark);
         transition: all 250ms ease;
     }

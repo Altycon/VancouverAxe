@@ -81,39 +81,7 @@ const toggleMenu = (ev)=>{
     
 };
 
-const CssVariables = [
-    {
-        id: "PrimaryColor",
-        from: "--color-primary-light",
-        to: "--color-primary-dark"
-    },
-    {
-        id: "PrimaryAccentColor",
-        from: "--color-primary-accent-light",
-        to: "--color-primary-accent-dark"
-    },
-    {
-        id: "ContactFormTextareaImages",
-        from: "--contact-form-textarea-image-light",
-        to: "--contact-form-textarea-image-dark"
-    },
-    {
-        id: "SocialImagesBrightness",
-        from: "--social-link-brightness-desktop",
-        to: "--social-link-brightness-mobile"
-    }
-]
 
-const toggleVariables = (arr)=>{
-    if(!arr) return;
-    const root = getComputedStyle(document.documentElement);
-    for(let i = 0; i < arr.length; i++){
-        const from = root.getPropertyValue(arr[i].from);
-        const to = root.getPropertyValue(arr[i].to);
-        document.documentElement.style.setProperty(arr[i].to, from);
-        document.documentElement.style.setProperty(arr[i].from, to);
-    }
-}
 
 const toggleDarkMode = (ev)=>{
     const root = getComputedStyle(document.documentElement);
@@ -136,7 +104,6 @@ const toggleDarkMode = (ev)=>{
         document.documentElement.style.setProperty('--social-link-brightness-mobile', SocialLinkBrightnessDesktop);
     }
     
-    // toggleVariables(CssVariables);
 
      
     document.querySelector('.sun-decoration1').classList.toggle('change');
